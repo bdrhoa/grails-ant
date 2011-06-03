@@ -1,4 +1,4 @@
-package org.grails.plugins.grails-ant
+package org.grails.plugins.grailsant
 
 import grails.test.*
 
