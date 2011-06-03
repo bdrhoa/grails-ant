@@ -1,4 +1,4 @@
-<plugin name='grails-ant' version='0.1' grailsVersion='1.3.7 &gt; *'>
+<plugin name='grails-ant' version='0.1.1' grailsVersion='1.2.3 &gt; *'>
   <author>Brad Rhoads</author>
   <authorEmail>bdrhoa@gmail.com</authorEmail>
   <title>Grails Ant Plugin</title>
