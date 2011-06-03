@@ -13,8 +13,8 @@ class GrailsAntGrailsPlugin {
 	// TODO Fill in these fields
 	def author = "Brad Rhoads"
 	def authorEmail = "bdrhoa@gmail.com"
-	def title = "Plugin summary/headline"
-	def description = '''\\
+	def title = "Grails Ant Plugin"
+	def description = '''
 Provides ant to Grails applications
 '''
 
