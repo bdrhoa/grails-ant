@@ -8,6 +8,7 @@ package org.grails.plugins.grailsant
  * Reference: http://ant.apache.org/manual/
  */
 
+
 class AntUtilsService {
 
 	static transactional = false
@@ -30,34 +31,48 @@ class AntUtilsService {
 	def unzip(String zipFile,  String destDir, String mapperType, Boolean overwrite) {
 
 		def ant = new AntBuilder();   // create an antbuilder
-		if (mapperType) {
-			ant.unzip(  src: zipFile, dest:destDir,  overwrite:overwrite) {mapper(type:mapperType)}
-		} else {
-			ant.unzip(  src: zipFile, dest:destDir,  overwrite:overwrite)
+		if(isValidZip(zipFile)) {
+			if (mapperType) {
+				ant.unzip(  src: zipFile, dest:destDir,  overwrite:overwrite) {mapper(type:mapperType)}
+			} else {
+				ant.unzip(  src: zipFile, dest:destDir,  overwrite:overwrite)
+			}
 		}
-
+		else {
+			throw new UnzipException(
+				message: "Invalid zip file.", fileName: zipFile)
+		}
 	}
-	
+
 	def zip(String destfile,String basedir) {
 		return zip(destfile,basedir,"**/*.*", "")
 	}
-	
 
-	
+
+
 	def zip(String destfile,String basedir,String includes) {
-		return zip(destfile,basedir,includes, "")	
+		return zip(destfile,basedir,includes, "")
 	}
 
-	
+
 	def zip(String destfile,String basedir,String includes,String excludes) {
-		
+
 		def ant = new AntBuilder();   // create an antbuilder
-	
+
 		ant.zip(destfile: destfile,
 				basedir:  basedir,
 				includes: includes,
 				excludes: excludes)
-					
+
 	}
-	
+
+	def isValidZip(String file){
+		def theFile = new File(file)
+		return isValidZip(theFile)
+	}
+
+	def isValidZip(File file) {
+		return AntUtils.isValid(file)
+	}
+
 }
