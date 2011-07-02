@@ -40,7 +40,9 @@ class AntUtilsService {
 		}
 		else {
 			throw new UnzipException(
-				message: "Invalid zip file.", fileName: zipFile)
+				message:"grailsant.unzipexception.badfile", 
+				defaultMessage: "Invalid zip file: ${zipFile}", 
+				fileName: zipFile)
 		}
 	}
 
